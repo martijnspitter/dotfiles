@@ -1,12 +1,15 @@
 #!/usr/bin/env bash
 
 tmux detach
-selected=$(find ~/projects ~/klar ~/klar/klar-fe ~/klar-be ~/doccs -mindepth 1 -maxdepth 1 -type d | fzf)
+selected=$(find ~/.config ~/dotfiles ~/projects ~/klar ~/klar/klar-fe ~/klar-be ~/doccs -mindepth 1 -maxdepth 1 -type d | fzf)
 selected_name=$(basename "$selected" | tr . _)
 tmux_running=$(pgrep tmux)
 echo $selected
 if [[ $selected == *"klar-fe"* ]]; then
   tmuxifier load-session klar-fe
+
+elif [[ $selected == *"clicky-fe"* ]]; then
+  tmuxifier load-session clicky-fe
 
 elif [[ $selected == *"clicky"* ]]; then
   tmuxifier load-session clicky
@@ -16,6 +19,9 @@ elif [[ $selected == *"workout"* ]]; then
 
 elif [[ $selected == *"klar-be"* ]]; then
   tmuxifier load-session klar-be
+
+elif [[ $selected == *"nvim"* ]]; then
+  tmuxifier load-session nvim
 
 else
     if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
