@@ -23,10 +23,11 @@ plugins=(
 source $ZSH/oh-my-zsh.sh
 
 export PYTHON=python3
-# source ~/powerlevel10k/powerlevel10k.zsh-theme
+
 bindkey -s ^f "~/dotfiles/tmux-sessionizer.sh\n"
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-# [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+bindkey -s ^dt "tmux detach"
+
+
 export CF_PAGES_URL="http://localhost"
 export NVM_DIR="$HOME/.nvm"
   [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
