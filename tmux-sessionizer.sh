@@ -26,6 +26,9 @@ elif [[ $selected == *"nvim"* ]]; then
 elif [[ $selected == *"dotfiles"* ]]; then
   tmuxifier load-session dotfiles
 
+elif [[ $selected == *"coding-challenges"* ]]; then
+  tmuxifier load-session coding-challenges
+
 else
     if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
         tmux new-session -s $selected_name -c $selected -n 'git'
