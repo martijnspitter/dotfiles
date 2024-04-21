@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 tmux detach
-selected=$(find ~/.config ~/dotfiles ~/projects ~/klar ~/klar/klar-fe ~/klar-be ~/doccs -mindepth 1 -maxdepth 1 -type d | fzf)
+selected=$(find ~/.config ~/ ~/projects ~/klar ~/klar/klar-fe ~/klar-be ~/doccs -mindepth 1 -maxdepth 1 -type d | fzf)
 selected_name=$(basename "$selected" | tr . _)
 tmux_running=$(pgrep tmux)
 echo $selected
@@ -22,6 +22,9 @@ elif [[ $selected == *"klar-be"* ]]; then
 
 elif [[ $selected == *"nvim"* ]]; then
   tmuxifier load-session nvim
+
+elif [[ $selected == *"dotfiles"* ]]; then
+  tmuxifier load-session dotfiles
 
 else
     if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
