@@ -8,6 +8,9 @@ echo $selected
 if [[ $selected == *"klar-fe"* ]]; then
   tmuxifier load-session klar-fe
 
+elif [[ $selected == *"new-shiny-theme-palette"* ]]; then
+  tmuxifier load-session new-shiny-theme-palette
+
 elif [[ $selected == *"clicky-fe"* ]]; then
   tmuxifier load-session clicky-fe
 
