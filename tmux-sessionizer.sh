@@ -5,11 +5,12 @@ selected=$(find ~/.config ~/ ~/projects ~/klar ~/klar/klar-fe ~/klar-be ~/doccs 
 selected_name=$(basename "$selected" | tr . _)
 tmux_running=$(pgrep tmux)
 echo $selected
-if [[ $selected == *"klar-fe"* ]]; then
-  tmuxifier load-session klar-fe
 
-elif [[ $selected == *"new-shiny-theme-palette"* ]]; then
+if [[ $selected == *"new-shiny-theme-palette"* ]]; then
   tmuxifier load-session new-shiny-theme-palette
+
+elif [[ $selected == *"klar-fe"* ]]; then
+  tmuxifier load-session klar-fe
 
 elif [[ $selected == *"clicky-fe"* ]]; then
   tmuxifier load-session clicky-fe
