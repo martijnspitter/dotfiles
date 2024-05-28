@@ -33,6 +33,9 @@ elif [[ $selected == *"dotfiles"* ]]; then
 elif [[ $selected == *"coding-challenges"* ]]; then
   tmuxifier load-session coding-challenges
 
+elif [[ $selected == *"obsidian"* ]]; then
+  tmuxifier load-session obsidian-vault
+
 else
     if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
         tmux new-session -s $selected_name -c $selected -n 'git'
