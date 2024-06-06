@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 tmux detach
-selected=$(find ~/.config ~/ ~/projects ~/klar ~/klar/klar-fe ~/klar-be ~/doccs -mindepth 1 -maxdepth 1 -type d | fzf)
+selected=$(find ~/.config ~/ ~/projects ~/project/go-learning ~/klar ~/klar/klar-fe ~/klar-be ~/doccs -mindepth 1 -maxdepth 1 -type d | fzf)
 selected_name=$(basename "$selected" | tr . _)
 tmux_running=$(pgrep tmux)
 echo $selected
@@ -35,6 +35,9 @@ elif [[ $selected == *"coding-challenges"* ]]; then
 
 elif [[ $selected == *"obsidian"* ]]; then
   tmuxifier load-session obsidian-vault
+
+elif [[ $selected == *"go-learning"* ]]; then
+  tmuifier load-session go-learning
 
 else
     if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
