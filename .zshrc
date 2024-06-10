@@ -12,6 +12,7 @@ fi
 export ZSH="$HOME/.oh-my-zsh"
 export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="$HOME/.tmuxifier/bin:$PATH"
+export TMUXP_CONFIGDIR="$HOME/dotfiles/tmuxp"
 export EDITOR="nvim"
 plugins=(
   git

@@ -1,0 +1,23 @@
+session_name: "${SESSION_NAME}"
+start_directory: "${QUERY}"
+windows:
+  - window_name: Editor
+    focus: true
+    panes:
+      - shell_command:
+          - nvim
+        focus: true
+  - window_name: Git
+    panes:
+      - shell_command:
+          - lazygit
+  - window_name: Terminal
+    layout: main-vertical
+    panes:
+      - null
+      - null
+  - window_name: Vault
+    panes:
+      - shell_command:
+          - cd ~/obsidian-vault
+          - nvim
