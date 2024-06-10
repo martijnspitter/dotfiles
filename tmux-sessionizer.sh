@@ -1,53 +1,47 @@
 #!/usr/bin/env bash
 
 tmux detach
-selected=$(find ~/.config ~/ ~/projects ~/project/go-learning ~/klar ~/klar/klar-fe ~/klar-be ~/doccs -mindepth 1 -maxdepth 1 -type d | fzf)
+selected=$(find ~/.config ~/ ~/projects ~/projects/go-learning ~/klar ~/klar/klar-fe -mindepth 1 -maxdepth 1 -type d | fzf)
 selected_name=$(basename "$selected" | tr . _)
 tmux_running=$(pgrep tmux)
 echo $selected
 
 if [[ $selected == *"new-shiny-theme-palette"* ]]; then
-  tmuxifier load-session new-shiny-theme-palette
+  SESSION_NAME=$selected_name QUERY=$selected tmuxp load -y ~/dotfiles/tmuxp/klar-fe.yaml
+
+elif [[ $selected == *"RBAC"* ]]; then 
+  SESSION_NAME=$selected_name QUERY=$selected tmuxp load -y ~/dotfiles/tmuxp/klar-fe.yaml
 
 elif [[ $selected == *"klar-fe"* ]]; then
-  tmuxifier load-session klar-fe
+  SESSION_NAME=$selected_name QUERY=$selected tmuxp load -y ~/dotfiles/tmuxp/klar-fe.yaml
 
 elif [[ $selected == *"clicky-fe"* ]]; then
-  tmuxifier load-session clicky-fe
+  SESSION_NAME=$selected_name QUERY=$selected tmuxp load -y ~/dotfiles/tmuxp/fe-run-dev.yaml
 
 elif [[ $selected == *"clicky"* ]]; then
-  tmuxifier load-session clicky
+  SESSION_NAME=$selected_name QUERY=$selected tmuxp load -y ~/dotfiles/tmuxp/no_server.yaml
 
 elif [[ $selected == *"workout"* ]]; then
-  tmuxifier load-session workout
+  SESSION_NAME=$selected_name QUERY=$selected tmuxp load -y ~/dotfiles/tmuxp/fe-run-dev.yaml
 
 elif [[ $selected == *"klar-be"* ]]; then
-  tmuxifier load-session klar-be
+  SESSION_NAME=$selected_name QUERY=$selected tmuxp load -y ~/dotfiles/tmuxp/no_server.yaml
 
 elif [[ $selected == *"nvim"* ]]; then
-  tmuxifier load-session nvim
+  SESSION_NAME=$selected_name QUERY=$selected tmuxp load -y ~/dotfiles/tmuxp/no_server.yaml
 
 elif [[ $selected == *"dotfiles"* ]]; then
-  tmuxifier load-session dotfiles
+  SESSION_NAME=$selected_name QUERY=$selected tmuxp load -y ~/dotfiles/tmuxp/no_server.yaml
 
 elif [[ $selected == *"coding-challenges"* ]]; then
-  tmuxifier load-session coding-challenges
+  SESSION_NAME=$selected_name QUERY=$selected tmuxp load -y ~/dotfiles/tmuxp/no_server.yaml
 
 elif [[ $selected == *"obsidian"* ]]; then
-  tmuxifier load-session obsidian-vault
+  SESSION_NAME=$selected_name QUERY=$selected tmuxp load -y ~/dotfiles/tmuxp/no_server.yaml
 
 elif [[ $selected == *"go-learning"* ]]; then
-  tmuifier load-session go-learning
+  SESSION_NAME=$selected_name QUERY=$selected tmuxp load -y ~/dotfiles/tmuxp/no_server.yaml
 
 else
-    if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
-        tmux new-session -s $selected_name -c $selected -n 'git'
-        exit 0
-    fi
-
-    if ! tmux has-session -t=$selected_name 2> /dev/null; then
-        tmux new-session -ds $selected_name -c $selected -n 'git'
-    fi
-
-    tmux switch-client -t $selected_name:1
+  SESSION_NAME=$selected_name QUERY=$selected tmuxp load -y ~/dotfiles/tmuxp/no_server.yaml
 fi
