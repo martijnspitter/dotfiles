@@ -30,3 +30,5 @@ yabai -m rule --add app="^Calculator$" manage=off
 yabai -m rule --add app="^Authy Desktop$" manage=off
 yabai -m rule --add app="^Keybase$" manage=off
 yabai -m rule --add app="^Pop$" manage=off
+yabai -m rule --add app="^Bitwarden$" manage=off
+
