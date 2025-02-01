@@ -5,19 +5,24 @@ windows:
     focus: true
     panes:
       - shell_command:
+          - nerdfetch
           - nvim
         focus: true
   - window_name: Git
     panes:
       - shell_command:
+          - nerdfetch
           - lazygit
   - window_name: Terminal
     layout: main-vertical
     panes:
-      - null
-      - null
+      - shell_command:
+          - nerdfetch
+      - shell_command:
+          - nerdfetch
   - window_name: Vault
     panes:
       - shell_command:
+          - nerdfetch
           - cd ~/obsidian-vault
           - nvim

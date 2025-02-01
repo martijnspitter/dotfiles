@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 tmux detach
-selected=$(find ~/.config ~/ ~/projects ~/projects/go-learning ~/klar ~/klar/klar-fe -mindepth 1 -maxdepth 1 -type d | fzf)
+selected=$(find ~/.config ~/ ~/projects ~/projects/go-learning ~/projects/coding-challenges ~/klar ~/klar/klar-fe -mindepth 1 -maxdepth 1 -type d | fzf)
 selected_name=$(basename "$selected" | tr . _)
 tmux_running=$(pgrep tmux)
 echo $selected
