@@ -26,3 +26,7 @@ windows:
           - nerdfetch
           - cd ~/obsidian-vault
           - nvim
+  - window_name: Todo
+    panes:
+      - shell_command:
+          - todo
