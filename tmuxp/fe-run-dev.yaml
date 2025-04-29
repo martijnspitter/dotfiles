@@ -6,13 +6,12 @@ windows:
     panes:
       - shell_command:
           - nerdfetch
-          - nvim
-        focus: true
   - window_name: Git
     panes:
       - shell_command:
           - nerdfetch
           - lazygit
+        focus: true
   - window_name: Terminal
     layout: main-vertical
     panes:

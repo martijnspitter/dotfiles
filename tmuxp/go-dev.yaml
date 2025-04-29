@@ -1,4 +1,4 @@
-session_name: ${SESSION_NAME}
+session_name: "${SESSION_NAME}"
 start_directory: "${QUERY}"
 windows:
   - window_name: Editor
@@ -29,13 +29,3 @@ windows:
     panes:
       - shell_command:
           - todo
-  - window_name: Server
-    layout: main-vertical
-    panes:
-      - shell_command:
-          - nerdfetch
-          - cd proxy
-          - docker-compose up
-      - shell_command:
-          - nerdfetch
-          - npm start

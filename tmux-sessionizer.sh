@@ -40,7 +40,13 @@ elif [[ $selected == *"obsidian"* ]]; then
   SESSION_NAME=$selected_name QUERY=$selected tmuxp load -y ~/dotfiles/tmuxp/no_server.yaml
 
 elif [[ $selected == *"go-learning"* ]]; then
-  SESSION_NAME=$selected_name QUERY=$selected tmuxp load -y ~/dotfiles/tmuxp/no_server.yaml
+  SESSION_NAME=$selected_name QUERY=$selected tmuxp load -y ~/dotfiles/tmuxp/go-dev.yaml
+
+elif [[ $selected == *"tui-todo"* ]]; then
+  SESSION_NAME=$selected_name QUERY=$selected tmuxp load -y ~/dotfiles/tmuxp/go-dev.yaml
+
+elif [[ $selected == *"kata"* ]]; then
+  SESSION_NAME=$selected_name QUERY=$selected tmuxp load -y ~/dotfiles/tmuxp/go-dev.yaml
 
 else
   SESSION_NAME=$selected_name QUERY=$selected tmuxp load -y ~/dotfiles/tmuxp/no_server.yaml
