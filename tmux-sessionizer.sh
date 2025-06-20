@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 tmux detach
-selected=$(find ~/.config ~/ ~/projects ~/projects/go-learning ~/projects/coding-challenges ~/klar ~/klar/klar-fe -mindepth 1 -maxdepth 1 -type d | fzf)
+selected=$(find ~/.config ~/ ~/projects ~/projects/go-learning ~/projects/coding-challenges ~/klar ~/klar/codesubmit ~/klar/klar-fe -mindepth 1 -maxdepth 1 -type d | fzf)
 selected_name=$(basename "$selected" | tr . _)
 tmux_running=$(pgrep tmux)
 echo $selected
@@ -37,7 +37,7 @@ elif [[ $selected == *"coding-challenges"* ]]; then
   SESSION_NAME=$selected_name QUERY=$selected tmuxp load -y ~/dotfiles/tmuxp/no_server.yaml
 
 elif [[ $selected == *"obsidian"* ]]; then
-  SESSION_NAME=$selected_name QUERY=$selected tmuxp load -y ~/dotfiles/tmuxp/no_server.yaml
+  SESSION_NAME=$selected_name QUERY=$selected tmuxp load -y ~/dotfiles/tmuxp/vault.yaml
 
 elif [[ $selected == *"go-learning"* ]]; then
   SESSION_NAME=$selected_name QUERY=$selected tmuxp load -y ~/dotfiles/tmuxp/go-dev.yaml

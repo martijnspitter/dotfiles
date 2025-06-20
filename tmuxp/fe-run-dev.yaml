@@ -19,12 +19,6 @@ windows:
           - nerdfetch
       - shell_command:
           - nerdfetch
-  - window_name: Vault
-    panes:
-      - shell_command:
-          - nerdfetch
-          - cd ~/obsidian-vault
-          - nvim
   - window_name: Todo
     panes:
       - shell_command:
