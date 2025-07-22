@@ -29,7 +29,7 @@ windows:
       - shell_command:
           - nerdfetch
           - cd proxy
-          - docker-compose up
+          - docker-compose up klar-proxy
       - shell_command:
           - nerdfetch
-          - npm start
+          - pnpm start
