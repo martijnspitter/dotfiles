@@ -9,8 +9,8 @@ echo $selected
 if [[ $selected == *"new-shiny-theme-palette"* ]]; then
   SESSION_NAME=$selected_name QUERY=$selected tmuxp load -y ~/dotfiles/tmuxp/klar-fe.yaml
 
-elif [[ $selected == *"RBAC"* ]]; then 
-  SESSION_NAME=$selected_name QUERY=$selected tmuxp load -y ~/dotfiles/tmuxp/klar-fe.yaml
+elif [[ $selected == *"claude"* ]]; then 
+  SESSION_NAME=$selected_name QUERY=$selected tmuxp load -y ~/dotfiles/tmuxp/claude.yaml
 
 elif [[ $selected == *"klar-fe"* ]]; then
   SESSION_NAME=$selected_name QUERY=$selected tmuxp load -y ~/dotfiles/tmuxp/klar-fe.yaml
