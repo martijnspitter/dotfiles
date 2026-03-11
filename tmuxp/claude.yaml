@@ -36,7 +36,7 @@ windows:
           - cd ~/klar/klar-fe/master/proxy
           - docker compose up klar-proxy-prod
       - shell_command:
-          - nerdfetch
+          - cd ~/klar/klar-fe/master
           - npm run start
       - shell_command:
           - cd ~/klar/klar-fe/kvl-app
