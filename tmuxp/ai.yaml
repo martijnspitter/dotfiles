@@ -1,0 +1,38 @@
+session_name: ${SESSION_NAME}
+start_directory: "${QUERY}"
+windows:
+  - window_name: Claude
+    layout: main-vertical
+    panes:
+      - shell_command:
+          - claude
+        focus: true
+      - shell_command:
+          - claude
+  - window_name: Terminal
+    layout: main-vertical
+    panes:
+      - shell_command:
+          - nerdfetch
+      - shell_command:
+          - nerdfetch
+  - window_name: Git
+    layout: main-vertical
+    panes:
+      - shell_command:
+          - lazygit
+      - shell_command:
+          - lazygit
+  - window_name: Servers
+    layout: main-vertical
+    panes:
+      - shell_command:
+          - nerdfetch
+      - shell_command:
+          - nerdfetch
+      - shell_command:
+          - nerdfetch
+  - window_name: Todo
+    panes:
+      - shell_command:
+          - todo

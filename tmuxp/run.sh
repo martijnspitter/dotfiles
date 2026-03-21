@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 tmux detach
-selected=$(find ~/.config ~/ ~/projects ~/projects/go-learning ~/projects/coding-challenges ~/klar ~/klar/codesubmit ~/klar/klar-fe -mindepth 1 -maxdepth 1 -type d | fzf)
+selected=$1
 selected_name=$(basename "$selected" | tr . _)
 tmux_running=$(pgrep tmux)
 echo $selected
@@ -54,3 +54,4 @@ elif [[ $selected == *"kata"* ]]; then
 else
   SESSION_NAME=$selected_name QUERY=$selected tmuxp load -y ~/dotfiles/tmuxp/no_server.yaml
 fi
+
