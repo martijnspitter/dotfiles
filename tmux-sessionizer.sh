@@ -12,6 +12,10 @@ if [[ $selected == *"new-shiny-theme-palette"* ]]; then
 elif [[ $selected == *"learn-platform"* ]]; then 
   SESSION_NAME=$selected_name QUERY=$selected tmuxp load -y ~/dotfiles/tmuxp/ai.yaml
 
+elif [[ $selected == *"claude-setup"* ]]; then 
+  SESSION_NAME=$selected_name QUERY=$selected tmuxp load -y ~/dotfiles/tmuxp/ai.yaml
+
+
 elif [[ $selected == *"claude"* ]]; then 
   SESSION_NAME=$selected_name QUERY=$selected tmuxp load -y ~/dotfiles/tmuxp/claude.yaml
 
