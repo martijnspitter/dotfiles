@@ -15,9 +15,8 @@ elif [[ $selected == *"learn-platform"* ]]; then
 elif [[ $selected == *"claude-setup"* ]]; then 
   SESSION_NAME=$selected_name QUERY=$selected tmuxp load -y ~/dotfiles/tmuxp/ai.yaml
 
-
 elif [[ $selected == *"claude"* ]]; then 
-  SESSION_NAME=$selected_name QUERY=$selected tmuxp load -y ~/dotfiles/tmuxp/claude.yaml
+  SESSION_NAME=$selected_name QUERY=$selected tmuxp load -y ~/dotfiles/tmuxp/ai.yaml
 
 elif [[ $selected == *"klar-fe"* ]]; then
   SESSION_NAME=$selected_name QUERY=$selected tmuxp load -y ~/dotfiles/tmuxp/klar-fe.yaml
