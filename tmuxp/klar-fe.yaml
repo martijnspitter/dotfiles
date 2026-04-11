@@ -32,4 +32,4 @@ windows:
           - docker compose ps --status running | grep -q klar-proxy-prod && docker compose attach klar-proxy-prod || docker compose up klar-proxy-prod
       - shell_command:
           - nerdfetch
-          - pnpm start
+          - portless run pnpm start

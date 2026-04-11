@@ -28,6 +28,6 @@ windows:
     panes:
       - shell_command:
           - nerdfetch
-          - npm run dev
+          - portless run npm run dev
       - shell_command:
           - nerdfetch

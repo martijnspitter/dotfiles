@@ -1,59 +1,67 @@
 #!/usr/bin/env bash
 
-tmux detach
 selected=$(find ~/.config ~/ ~/projects ~/projects/go-learning ~/projects/coding-challenges ~/klar ~/klar/codesubmit ~/klar/klar-fe -mindepth 1 -maxdepth 1 -type d | fzf)
 selected_name=$(basename "$selected" | tr . _)
 tmux_running=$(pgrep tmux)
 echo $selected
 
+load_session() {
+  SESSION_NAME=$selected_name QUERY=$selected tmuxp load -d -y "$1"
+  if [ -n "$TMUX" ]; then
+    tmux switch-client -t "$selected_name"
+  else
+    tmux attach-session -t "$selected_name"
+  fi
+}
+
 if [[ $selected == *"new-shiny-theme-palette"* ]]; then
-  SESSION_NAME=$selected_name QUERY=$selected tmuxp load -y ~/dotfiles/tmuxp/klar-fe.yaml
+  load_session ~/dotfiles/tmuxp/klar-fe.yaml
 
-elif [[ $selected == *"learn-platform"* ]]; then 
-  SESSION_NAME=$selected_name QUERY=$selected tmuxp load -y ~/dotfiles/tmuxp/ai.yaml
+elif [[ $selected == *"learn-platform"* ]]; then
+  load_session ~/dotfiles/tmuxp/ai.yaml
 
-elif [[ $selected == *"claude-setup"* ]]; then 
-  SESSION_NAME=$selected_name QUERY=$selected tmuxp load -y ~/dotfiles/tmuxp/ai.yaml
+elif [[ $selected == *"claude-setup"* ]]; then
+  load_session ~/dotfiles/tmuxp/ai.yaml
 
-elif [[ $selected == *"claude"* ]]; then 
-  SESSION_NAME=$selected_name QUERY=$selected tmuxp load -y ~/dotfiles/tmuxp/ai.yaml
+elif [[ $selected == *"claude"* ]]; then
+  load_session ~/dotfiles/tmuxp/ai.yaml
 
 elif [[ $selected == *"klar-fe"* ]]; then
-  SESSION_NAME=$selected_name QUERY=$selected tmuxp load -y ~/dotfiles/tmuxp/klar-fe.yaml
+  load_session ~/dotfiles/tmuxp/klar-fe.yaml
 
 elif [[ $selected == *"clicky-fe"* ]]; then
-  SESSION_NAME=$selected_name QUERY=$selected tmuxp load -y ~/dotfiles/tmuxp/fe-run-dev.yaml
+  load_session ~/dotfiles/tmuxp/fe-run-dev.yaml
 
 elif [[ $selected == *"clicky"* ]]; then
-  SESSION_NAME=$selected_name QUERY=$selected tmuxp load -y ~/dotfiles/tmuxp/no_server.yaml
+  load_session ~/dotfiles/tmuxp/no_server.yaml
 
 elif [[ $selected == *"workout"* ]]; then
-  SESSION_NAME=$selected_name QUERY=$selected tmuxp load -y ~/dotfiles/tmuxp/fe-run-dev.yaml
+  load_session ~/dotfiles/tmuxp/fe-run-dev.yaml
 
 elif [[ $selected == *"klar-be"* ]]; then
-  SESSION_NAME=$selected_name QUERY=$selected tmuxp load -y ~/dotfiles/tmuxp/no_server.yaml
+  load_session ~/dotfiles/tmuxp/no_server.yaml
 
 elif [[ $selected == *"nvim"* ]]; then
-  SESSION_NAME=$selected_name QUERY=$selected tmuxp load -y ~/dotfiles/tmuxp/no_server.yaml
+  load_session ~/dotfiles/tmuxp/no_server.yaml
 
 elif [[ $selected == *"dotfiles"* ]]; then
-  SESSION_NAME=$selected_name QUERY=$selected tmuxp load -y ~/dotfiles/tmuxp/no_server.yaml
+  load_session ~/dotfiles/tmuxp/no_server.yaml
 
 elif [[ $selected == *"coding-challenges"* ]]; then
-  SESSION_NAME=$selected_name QUERY=$selected tmuxp load -y ~/dotfiles/tmuxp/no_server.yaml
+  load_session ~/dotfiles/tmuxp/no_server.yaml
 
 elif [[ $selected == *"obsidian"* ]]; then
-  SESSION_NAME=$selected_name QUERY=$selected tmuxp load -y ~/dotfiles/tmuxp/vault.yaml
+  load_session ~/dotfiles/tmuxp/vault.yaml
 
 elif [[ $selected == *"go-learning"* ]]; then
-  SESSION_NAME=$selected_name QUERY=$selected tmuxp load -y ~/dotfiles/tmuxp/go-dev.yaml
+  load_session ~/dotfiles/tmuxp/go-dev.yaml
 
 elif [[ $selected == *"tui-todo"* ]]; then
-  SESSION_NAME=$selected_name QUERY=$selected tmuxp load -y ~/dotfiles/tmuxp/go-dev.yaml
+  load_session ~/dotfiles/tmuxp/go-dev.yaml
 
 elif [[ $selected == *"kata"* ]]; then
-  SESSION_NAME=$selected_name QUERY=$selected tmuxp load -y ~/dotfiles/tmuxp/go-dev.yaml
+  load_session ~/dotfiles/tmuxp/go-dev.yaml
 
 else
-  SESSION_NAME=$selected_name QUERY=$selected tmuxp load -y ~/dotfiles/tmuxp/no_server.yaml
+  load_session ~/dotfiles/tmuxp/no_server.yaml
 fi
