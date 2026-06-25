@@ -1,0 +1,171 @@
+// Zed keymap
+//
+// For information on binding keys, see the Zed
+// documentation: https://zed.dev/docs/key-bindings
+//
+// To see the default key bindings run `zed: open default keymap`
+// from the command palette.
+[
+  {
+    "context": "Workspace",
+    "bindings": {
+      "ctrl-g": "workspace::ToggleLeftDock",
+      "ctrl-h": "workspace::ActivatePaneLeft",
+      "ctrl-j": "workspace::ActivatePaneDown",
+      "ctrl-k": "workspace::ActivatePaneUp",
+      "ctrl-l": "workspace::ActivatePaneRight",
+      "ctrl-q": "tab_switcher::CloseSelectedItem",
+      "space l g": [
+        "task::Spawn",
+        {
+          "task_name": "LazyGit",
+          "reveal_target": "center"
+        }
+      ],
+      "space s f": [
+        "task::Spawn",
+        {
+          "task_name": "file_finder",
+          "reveal_target": "center"
+        }
+      ],
+      "space s F": "file_finder::Toggle"
+    }
+  },
+  {
+    "context": "MessageEditor > Editor",
+    "bindings": {
+      "ctrl-g": "workspace::ToggleLeftDock",
+      "ctrl-h": "workspace::ActivatePaneLeft",
+      "ctrl-j": "workspace::ActivatePaneDown",
+      "ctrl-k": "workspace::ActivatePaneUp",
+      "ctrl-l": "workspace::ActivatePaneRight",
+      "ctrl-q": "tab_switcher::CloseSelectedItem",
+      "space s f": [
+        "task::Spawn",
+        {
+          "task_name": "file_finder",
+          "reveal_target": "center"
+        }
+      ],
+      "space s F": "file_finder::Toggle",
+      "enter": "editor::Newline",
+      "cmd-enter": "agent::Chat",
+      "cmd-w": "workspace::ToggleRightDock"
+    }
+  },
+  {
+    "context": "ProjectPanel && not_editing",
+    "bindings": {
+      "ctrl-g": "workspace::ToggleLeftDock",
+      "a": "project_panel::NewFile",
+      "k": "menu::SelectPrevious",
+      "j": "menu::SelectNext",
+      "h": "project_panel::CollapseSelectedEntry",
+      "l": "project_panel::ExpandSelectedEntry",
+      "o": "project_panel::Open",
+      "r": "project_panel::Rename"
+    }
+  },
+  {
+    "context": "Search",
+    "bindings": {
+      "ctrl-q": "tab_switcher::CloseSelectedItem"
+    }
+  },
+  {
+    "context": "ProjectSearch",
+    "bindings": {
+      "ctrl-q": "tab_switcher::CloseSelectedItem"
+    }
+  },
+  {
+    "context": "Editor && VimControl && !VimWaiting && !menu",
+    "bindings": {
+      "space r t": [
+        "task::Spawn",
+        {
+          "task_name": "Run Vitest"
+        }
+      ],
+      "space m n": "editor::Fold",
+      "space m x": "editor::UnfoldLines",
+      "space i h": "editor::ToggleInlayHints",
+      "space w": "workspace::Save",
+      "space q": "pane::CloseActiveItem",
+      "shift-k": "editor::Hover",
+      "space g d": "editor::GoToDefinition",
+      "space g r": "editor::FindAllReferences",
+      "space c a": "editor::ToggleCodeActions",
+      "space r n": "editor::Rename",
+      "space l l": "diagnostics::Deploy",
+      "tab": "editor::Tab",
+      "shift-tab": "editor::Backtab",
+      "t h": "pane::ActivatePreviousItem",
+      "t l": "pane::ActivateNextItem",
+      "t a": "pane::CloseOtherItems",
+      "ctrl-q": "pane::CloseActiveItem",
+      "space s f": [
+        "task::Spawn",
+        {
+          "task_name": "file_finder",
+          "reveal_target": "center"
+        }
+      ],
+      "space s F": "file_finder::Toggle",
+      "space s g": "project_symbols::Toggle",
+      "space s b": "buffer_search::Deploy",
+      "space s t": "pane::DeploySearch",
+      "space o": "tab_switcher::Toggle",
+      "space p": "outline::Toggle",
+      "ctrl-g": "workspace::ToggleLeftDock",
+      "ctrl-h": "workspace::ActivatePaneLeft",
+      "ctrl-j": "workspace::ActivatePaneDown",
+      "ctrl-k": "workspace::ActivatePaneUp",
+      "ctrl-l": "workspace::ActivatePaneRight",
+      "L": "editor::MoveToEndOfLine",
+      "H": "vim::StartOfLine",
+      "Y": "vim::YankToEndOfLine",
+      "space v": "editor::GoToDefinitionSplit",
+      "space g f": "editor::OpenExcerpts"
+    }
+  },
+  {
+    "context": "Editor && vim_mode == insert && !menu",
+    "bindings": {
+      "j j": "vim::NormalBefore",
+      "ctrl-tab": "editor::ShowEditPrediction",
+      "shift-tab": "editor::AcceptEditPrediction"
+    }
+  },
+  {
+    "context": "Editor && vim_mode == visual && !menu",
+    "bindings": {
+      "shift-j": "editor::MoveLineDown",
+      "shift-k": "editor::MoveLineUp"
+    }
+  },
+  {
+    "context": "Editor",
+    "bindings": {
+      "cmd-k": "editor::AddSelectionAbove",
+      "cmd-j": "editor::AddSelectionBelow",
+      "cmd-ctrl-n": "editor::AddSelectionBelow",
+      "space s f": [
+        "task::Spawn",
+        {
+          "task_name": "file_finder",
+          "reveal_target": "center"
+        }
+      ],
+      "space s F": "file_finder::Toggle",
+      "space s g": "project_symbols::Toggle",
+      "cmd-d": [
+        "editor::SelectNext",
+        {
+          "replace_newest": false
+        }
+      ]
+    }
+  }
+]

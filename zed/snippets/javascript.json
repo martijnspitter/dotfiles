@@ -1,0 +1,53 @@
+{
+  "Log to the console": {
+    "prefix": "log",
+    "body": [
+      "console.log('$0', $0)"
+    ],
+    "description": "Log to the console"
+  },
+  "JSON Log to the console": {
+    "prefix": "jlog",
+    "body": [
+      "console.log('%0', JSON.stringify($0, null, 2))"
+    ],
+    "description": "Log to the console"
+  },
+  "Comment_block": {
+    "prefix": "comblock",
+    "body": [
+      "// ===========================================================================",
+      "// $1",
+      "// ==========================================================================="
+    ],
+    "description": "Comment block"
+  },
+  "Docs_block": {
+    "prefix": "docblock",
+    "body": [
+      "// XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+      "// DOCS",
+      "// XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+    ],
+    "description": "Documentation block"
+  },
+  "View_component": {
+    "prefix": "viewcomponent",
+    "body": [
+      "type $1Props = {",
+      "}",
+      "",
+      "export const $1 = ({}: $1Props) => {",
+      "// ===========================================================================",
+      "// Render",
+      "// ===========================================================================",
+      "  return (",
+      "    <div>",
+      "      $1",
+      "    </div>",
+      "  );",
+      "};"
+    ],
+    "description": "View component"
+  }
+}

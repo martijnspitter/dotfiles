@@ -1,0 +1,28 @@
+{
+  "Log": {
+    "prefix": "-log",
+    "body": [
+      "fmt.Println($1);",
+      "$0"
+    ],
+    "description": "Log to the console"
+  },
+  "comblock": {
+    "prefix": "comblock",
+    "body": [
+      "// ===========================================================================",
+      "// $1",
+      "// ==========================================================================="
+    ],
+    "description": "Comment block"
+  },
+  "Docs_block": {
+    "prefix": "docblock",
+    "body": [
+      "// XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+      "// DOCS",
+      "// XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+    ],
+    "description": "Documentation block"
+  },
+}

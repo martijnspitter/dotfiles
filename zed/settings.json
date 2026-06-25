@@ -1,0 +1,250 @@
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run `zed: open default settings` from the
+// command palette
+{
+  "cli_default_open_behavior": "existing_window",
+  "project_panel": {
+    "dock": "left"
+  },
+  "outline_panel": {
+    "dock": "left"
+  },
+  "collaboration_panel": {
+    "dock": "left"
+  },
+  "git_panel": {
+    "dock": "left"
+  },
+  "indent_guides": {
+    "background_coloring": "disabled"
+  },
+  "colorize_brackets": true,
+  "context_servers": {
+    "mcp-server-mui": {
+      "enabled": true,
+      "settings": {
+        "preferred_theme": "",
+        "component_filter": [
+          ""
+        ]
+      }
+    },
+    "linear": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "mcp-remote",
+        "https://mcp.linear.app/sse"
+      ],
+      "env": {}
+    }
+  },
+  "always_treat_brackets_as_autoclosed": true,
+  "bottom_dock_layout": "right_aligned",
+  "icon_theme": "Material Icon Theme",
+  "edit_predictions": {
+    "provider": "copilot",
+    "disabled_globs": [],
+    "mode": "eager"
+  },
+  "lsp_document_colors": "background",
+  "agent": {
+    "dock": "right",
+    "tool_permissions": {
+      "default": "allow"
+    },
+    "profiles": {
+      "ask": {
+        "name": "Ask",
+        "tools": {
+          "search_web": true,
+          "diagnostics": true,
+          "fetch": true,
+          "list_directory": true,
+          "project_notifications": false,
+          "now": true,
+          "find_path": true,
+          "read_file": true,
+          "open": true,
+          "grep": true,
+          "thinking": true
+        },
+        "enable_all_context_servers": false,
+        "context_servers": {}
+      }
+    },
+    "default_model": {
+      "enable_thinking": true,
+      "provider": "copilot_chat",
+      "model": "claude-sonnet-4.5"
+    },
+    "default_profile": "write",
+    "model_parameters": []
+  },
+  "autosave": "on_focus_change",
+  "auto_update": true,
+  "telemetry": {
+    "metrics": false
+  },
+  "use_autoclose": true,
+  "use_auto_surround": true,
+  "vim_mode": true,
+  "vim": {
+    "use_system_clipboard": "on_yank",
+    "use_smartcase_find": true
+  },
+  "relative_line_numbers": "enabled",
+  "cursor_blink": false,
+  "scrollbar": {
+    "show": "never"
+  },
+  "ui_font_size": 16,
+  "ui_font_family": "Fira Code",
+  "buffer_font_family": "Fira Code",
+  "terminal": {
+    "dock": "right",
+    "font_size": 14,
+    "font_family": "Fira Code"
+  },
+  "buffer_font_size": 14,
+  "theme": {
+    "mode": "system",
+    "light": "One Light",
+    "dark": "Catppuccin Mocha"
+  },
+  "code_actions_on_format": {
+    "source.removeUnusedImports": true,
+    "enabled": true
+  },
+  "languages": {
+    "JavaScript": {
+      "show_edit_predictions": true,
+      "formatter": {
+        "language_server": {
+          "name": "biome"
+        }
+      },
+      "format_on_save": "on",
+      "code_actions_on_format": {
+        "source.fixAll.biome": true,
+        "source.organizeImports.biome": true
+      }
+    },
+    "TypeScript": {
+      "show_edit_predictions": true,
+      "formatter": {
+        "language_server": {
+          "name": "biome"
+        }
+      },
+      "format_on_save": "on",
+      "code_actions_on_format": {
+        "source.fixAll.biome": true,
+        "source.organizeImports.biome": true
+      }
+    },
+    "TSX": {
+      "show_edit_predictions": true,
+      "format_on_save": "on",
+      "formatter": {
+        "language_server": {
+          "name": "biome"
+        }
+      },
+      "code_actions_on_format": {
+        "source.fixAll.biome": true,
+        "source.organizeImports.biome": true
+      }
+    },
+    "JSON": {
+      "show_edit_predictions": true,
+      "format_on_save": "on",
+      "language_servers": [
+        "!biome",
+        "json-language-server"
+      ],
+      "formatter": {
+        "language_server": {
+          "name": "json-language-server"
+        }
+      },
+      "code_actions_on_format": {
+        "enabled": true
+      }
+    },
+    "JSONC": {
+      "show_edit_predictions": true,
+      "format_on_save": "on",
+      "language_servers": [
+        "!biome",
+        "json-language-server"
+      ],
+      "formatter": {
+        "language_server": {
+          "name": "json-language-server"
+        }
+      },
+      "code_actions_on_format": {
+        "enabled": true
+      }
+    },
+    "CSS": {
+      "show_edit_predictions": true,
+      "format_on_save": "on",
+      "formatter": {
+        "language_server": {
+          "name": "biome"
+        }
+      },
+      "code_actions_on_format": {
+        "source.fixAll.biome": true,
+        "source.organizeImports.biome": true
+      }
+    },
+    "YAML": {
+      "show_edit_predictions": true
+    },
+    "SQL": {
+      "show_edit_predictions": false
+    },
+    "Go": {
+      "show_edit_predictions": true,
+      "format_on_save": "on",
+      "formatter": "language_server"
+    },
+    "Markdown": {
+      "show_edit_predictions": false,
+      "format_on_save": "on"
+    }
+  },
+  "lsp": {
+    "vtsls": {
+      "settings": {
+        "typescript": {
+          "updateImportsOnFileMove": {
+            "enabled": "always"
+          }
+        },
+        "javascript": {
+          "updateImportsOnFileMove": {
+            "enabled": "always"
+          }
+        }
+      },
+      "enable_lsp_tasks": true
+    },
+    "biome": {
+      "settings": {
+        "require_config_file": true
+      }
+    }
+  },
+  "minimap": {
+    "show": "auto"
+  }
+}

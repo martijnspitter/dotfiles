@@ -1,0 +1,15 @@
+[metadata]
+name = "tmuxifier"
+description = "Search projects and open a new tmux session with layout loaded"
+requirements = ["tmux", "tmuxp"]
+
+[source]
+command = ["find ~/.config ~/ ~/projects ~/projects/go-learning ~/projects/coding-challenges ~/klar ~/klar/codesubmit ~/klar/klar-fe -mindepth 1 -maxdepth 1 -type d"]
+
+[keybindings]
+enter = "actions:load"
+
+[actions.load]
+description = "Load the project with tmuxp"
+command = "~/dotfiles/tmuxp/run.sh '{}'"
+mode = "execute"
