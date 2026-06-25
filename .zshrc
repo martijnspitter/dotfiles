@@ -17,11 +17,13 @@ export EDITOR="nvim"
 plugins=(
   git
   web-search
-  zsh-autosuggestions
-  zsh-syntax-highlighting
 )
 
 source $ZSH/oh-my-zsh.sh
+
+# zsh-autosuggestions (installed via Homebrew)
+HOMEBREW_PREFIX="${HOMEBREW_PREFIX:-/opt/homebrew}"
+source "$HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
 
 export PYTHON=python3
 
@@ -36,12 +38,23 @@ export NVM_DIR="$HOME/.nvm"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # pnpm
-export PNPM_HOME="/Users/martijn/Library/pnpm"
+export PNPM_HOME="/Users/martijnspitter/Library/pnpm"
 case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
+  *":$PNPM_HOME/bin:"*) ;;
+  *) export PATH="$PNPM_HOME/bin:$PATH" ;;
 esac
 # pnpm end
 
 eval "$(tmuxifier init -)"
 eval "$(starship init zsh)"
+
+# atuin (shell history)
+export PATH="$HOME/.local/bin:$PATH"
+. "$HOME/.atuin/bin/env"
+eval "$(atuin init zsh)"
+
+# zsh-syntax-highlighting (installed via Homebrew) — must be sourced last
+source "$HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+
+# Machine-local secrets/overrides — NOT tracked in the dotfiles repo
+[ -f "$HOME/.zshrc.local" ] && source "$HOME/.zshrc.local"

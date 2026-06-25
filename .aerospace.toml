@@ -62,7 +62,7 @@ on-mode-changed = []
 # Use `aerospace list-apps` to list running apps and get the
 # identifying names you can use here to organize things.
 [[on-window-detected]]
-if.app-id = 'company.htebrowser.Browser'
+if.app-id = 'app.zen-browser.zen'
 run = 'move-node-to-workspace 1'
 
 [[on-window-detected]]
@@ -82,7 +82,7 @@ if.app-id = 'org.mozilla.thunderbird'
 run = 'move-node-to-workspace 5'
 
 [[on-window-detected]]
-if.app-id = 'company.thebrowser.Browser'
+if.app-id = 'app.zen-browser.zen'
 run = 'move-node-to-workspace 6'
 
 [[on-window-detected]]
@@ -98,7 +98,7 @@ if.app-id = 'com.mitchellh.ghostty'
 run = 'move-node-to-workspace 9'
 
 [[on-window-detected]]
-if.app-id = 'company.thebrowser.Browser'
+if.app-id = 'app.zen-browser.zen'
 run = 'move-node-to-workspace Y'
 
 [[on-window-detected]]

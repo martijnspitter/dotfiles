@@ -42,33 +42,50 @@ fi
 
 # fg colors matching each segment's bg (for rounded caps and arrows)
 fg_surface0="\e[38;2;49;50;68m"   # surface0 as fg
+fg_black="\e[38;2;0;0;0m"
 
-# Build status line
-# Left rounded cap (no bg, fg = surface0 color)
-printf "${fg_surface0}${reset}"
+# Powerline glyphs (require a Nerd Font, e.g. FiraCode Nerd Font).
+# Built from raw UTF-8 bytes so the PUA codepoints survive editing.
+cap_left=$(printf '\xee\x82\xb6')   # U+E0B6 rounded left cap
+cap_right=$(printf '\xee\x82\xb4')  # U+E0B4 rounded right cap
+sep=$(printf '\xee\x82\xb0')        # U+E0B0 arrow divider (left color over next bg)
+git_icon=$(printf '\xee\x82\xa0')   # U+E0A0 branch symbol
+
+# Build status line.
+# Each segment is chained: <divider in prev color over this bg><this bg+fg + text>.
+# Outer ends use rounded caps so the whole bar reads as a pill.
+
+# Left rounded cap, in the first segment's color
+printf "${fg_surface0}${cap_left}${reset}"
 printf "${surface0}${fg_text} $(whoami) ${reset}"
-printf "${fg_peach}${peach}${reset}"
+
+# surface0 -> peach
+printf "${fg_surface0}${peach}${sep}${reset}"
 printf "${peach}${fg_base} ${short_path} ${reset}"
 
 if [ -n "$git_branch" ]; then
-  printf "${fg_green}${green}${reset}"
-  printf "${green}${fg_base}  ${git_branch}${git_dirty} ${reset}"
-  printf "${fg_teal}${teal}${reset}"
+  # peach -> green
+  printf "${fg_peach}${green}${sep}${reset}"
+  printf "${green}${fg_base} ${git_icon} ${git_branch}${git_dirty} ${reset}"
+  # green -> teal
+  printf "${fg_green}${teal}${sep}${reset}"
 else
-  printf "${fg_teal}${teal}${reset}"
+  # peach -> teal
+  printf "${fg_peach}${teal}${sep}${reset}"
 fi
 
 printf "${teal}${fg_base} ${model} ${reset}"
 
-# Context segment in purple (only when usage data is available)
-fg_black="\e[38;2;0;0;0m"
 if [ -n "$used" ]; then
   used_int=${used%.*}
-  printf "${fg_purple}${purple}${reset}"
+  # teal -> purple
+  printf "${fg_teal}${purple}${sep}${reset}"
   printf "${purple}${fg_black} ${used_int}%% ${reset}"
-  printf "${fg_purple}${reset}"
+  # purple right rounded cap
+  printf "${fg_purple}${cap_right}${reset}"
 else
-  printf "${fg_teal}${reset}"
+  # teal right rounded cap
+  printf "${fg_teal}${cap_right}${reset}"
 fi
 
 printf "\n"
