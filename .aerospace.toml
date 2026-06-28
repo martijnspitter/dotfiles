@@ -90,11 +90,11 @@ if.app-id = 'com.cmuxterm.app'
 run = 'move-node-to-workspace 7'
 
 [[on-window-detected]]
-if.app-id = 'dev.zed.Zed'
+if.app-id = 'com.mitchellh.ghostty'
 run = 'move-node-to-workspace 8'
 
 [[on-window-detected]]
-if.app-id = 'com.mitchellh.ghostty'
+if.app-id = 'dev.zed.Zed'
 run = 'move-node-to-workspace 9'
 
 [[on-window-detected]]
