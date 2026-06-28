@@ -82,7 +82,7 @@ if.app-id = 'org.mozilla.thunderbird'
 run = 'move-node-to-workspace 5'
 
 [[on-window-detected]]
-if.app-id = 'app.zen-browser.zen'
+if.app-id = 'com.google.Chrome'
 run = 'move-node-to-workspace 6'
 
 [[on-window-detected]]
