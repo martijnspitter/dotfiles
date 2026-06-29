@@ -106,6 +106,22 @@ if.app-id = 'md.obsidian'
 run = 'move-node-to-workspace U'
 
 [[on-window-detected]]
+if.app-id = 'com.bitwarden.desktop'
+run = 'move-node-to-workspace I'
+
+[[on-window-detected]]
+if.app-id = 'com.1password.1password'
+run = 'move-node-to-workspace I'
+
+[[on-window-detected]]
+if.app-id = 'keybase.Electron'
+run = 'move-node-to-workspace I'
+
+[[on-window-detected]]
+if.app-id = 'io.tailscale.ipn.macos'
+run = 'move-node-to-workspace I'
+
+[[on-window-detected]]
 if.app-id = 'org.darktable'
 run = 'move-node-to-workspace O'
  
