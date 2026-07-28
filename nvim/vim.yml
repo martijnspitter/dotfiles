@@ -1,0 +1,7 @@
+---
+# Custom selene std addition: allow the global `vim` table (Neovim API).
+# Combined with the built-in lua51 std via `std = "lua51+vim"` in selene.toml.
+base: lua51
+globals:
+  vim:
+    any: true

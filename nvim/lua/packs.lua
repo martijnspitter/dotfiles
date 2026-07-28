@@ -3,6 +3,7 @@
 -- ============================================================================
 vim.pack.add({
     "https://www.github.com/lewis6991/gitsigns.nvim",
+    "https://github.com/sindrets/diffview.nvim",
     "https://www.github.com/echasnovski/mini.nvim",
     "https://www.github.com/nvim-tree/nvim-tree.lua",
     {
@@ -13,6 +14,8 @@ vim.pack.add({
     -- Language Server Protocols
     "https://www.github.com/neovim/nvim-lspconfig",
     "https://github.com/mason-org/mason.nvim",
+    "https://github.com/mason-org/mason-lspconfig.nvim",
+    "https://github.com/WhoIsSethDaniel/mason-tool-installer.nvim",
     "https://github.com/creativenull/efmls-configs-nvim",
     "https://github.com/obsidian-nvim/obsidian.nvim",
     "https://github.com/github/copilot.vim",
@@ -110,7 +113,10 @@ local function setup_obsidian()
         legacy_commands = false,
         workspaces = { { name = "Second Brain", path = "~/obsidian-vault" } },
         picker = { name = "telescope" },
-        new_notes_location = 'notes',
+        new_notes_location = 'notes_subdir',
+        notes_subdir = 'notes',
+        -- Use the note title (slugified) as the file name instead of a random zettel id.
+        note_id_func = require("obsidian.builtin").title_id,
         ui = {
             enable = true,
             checkboxes = {
@@ -223,20 +229,17 @@ local function setup_obsidian()
 
     -- Create new note with default template
     vim.keymap.set("n", "<leader>on", function()
-        local obsidian = require("obsidian").get_client()
         local title = vim.fn.input("Note title: ")
         if title == "" then return end
 
-        local note = obsidian:create_note({ title = title })
-        vim.cmd("edit " .. tostring(note.path))
-
-        -- Check if template exists before applying
-        local template_path = vim.fn.expand("~/obsidian-vault/templates/default-note-nvim.md")
-        if vim.fn.filereadable(template_path) == 1 then
-            vim.defer_fn(function()
-                vim.cmd("ObsidianTemplate default-note-nvim.md")
-            end, 150)
-        end
+        -- `id = title` lets note_id_func (title_id) turn the title into the file name,
+        -- and the template is applied on write.
+        local note = require("obsidian.note").create({
+            id = title,
+            template = "default-note-nvim.md",
+        })
+        note:write()
+        note:open({ sync = true })
     end, { desc = '[O]bsidian [N]ew note' })
     vim.keymap.set("n", "<leader>ot", '<cmd>Obsidian new_from_template<CR>', { desc = '[O]bsidian [T]emplate' })
     vim.keymap.set("n", "<leader>of", "<cmd>Obsidian quick_switch<cr>", { desc = "[O]bsidian [F]ind note" })
@@ -327,6 +330,12 @@ vim.keymap.set('n', '<leader>sn', function()
     builtin.find_files { cwd = vim.fn.stdpath 'config' }
 end, { desc = '[S]earch [N]eovim files' })
 
+-- Git history via Telescope (<CR> checks out / applies)
+vim.keymap.set('n', '<leader>ggc', builtin.git_commits, { desc = '[G]it [C]ommits (repo history)' })
+vim.keymap.set('n', '<leader>ggf', builtin.git_bcommits, { desc = '[G]it commits for current [F]ile' })
+vim.keymap.set('n', '<leader>ggt', builtin.git_status, { desc = '[G]it s[T]atus (changed files)' })
+vim.keymap.set('n', '<leader>ggr', builtin.git_branches, { desc = '[G]it b[R]anches' })
+
 -- ============================================================================
 -- MINI
 -- ============================================================================
@@ -364,6 +373,32 @@ require("gitsigns").setup({
 -- ============================================================================
 require("mason").setup({})
 
+-- Ensure the enabled LSP servers are actually installed. We keep
+-- automatic_enable off so the explicit vim.lsp.enable({...}) list below stays
+-- the single source of truth (mason-lspconfig only fetches the binaries).
+require("mason-lspconfig").setup({
+    ensure_installed = { "lua_ls", "pyright", "bashls", "ts_ls", "gopls" },
+    automatic_enable = false,
+})
+
+-- efm drives these linters/formatters; install them too so efm is functional.
+require("mason-tool-installer").setup({
+    ensure_installed = {
+        "selene",
+        "stylua",
+        "flake8",
+        "black",
+        "prettierd",
+        "eslint_d",
+        "shellcheck",
+        "shfmt",
+        "cpplint",
+        "clang-format",
+        "revive",
+        "gofumpt",
+    },
+})
+
 vim.keymap.set("n", "]h", function()
     require("gitsigns").nav_hunk("next")
 end, { desc = "Next git hunk" })
@@ -388,6 +423,16 @@ end, { desc = "Toggle inline blame" })
 vim.keymap.set("n", "<leader>hd", function()
     require("gitsigns").diffthis()
 end, { desc = "Diff this" })
+
+-- ============================================================================
+-- DIFFVIEW — side-by-side history & diffs
+-- ============================================================================
+require("diffview").setup({})
+
+vim.keymap.set("n", "<leader>ggd", "<cmd>DiffviewOpen<CR>", { desc = "[G]o [G]it [D]iff working tree" })
+vim.keymap.set("n", "<leader>ggh", "<cmd>DiffviewFileHistory %<CR>", { desc = "[G]o [G]it [H]istory (current file)" })
+vim.keymap.set("n", "<leader>ggH", "<cmd>DiffviewFileHistory<CR>", { desc = "[G]o [G]it [H]istory (repo)" })
+vim.keymap.set("n", "<leader>ggq", "<cmd>DiffviewClose<CR>", { desc = "[G]o [G]it diffview [Q]uit" })
 
 -- ============================================================================
 -- Completion
@@ -588,7 +633,7 @@ vim.lsp.config("biome", {
 })
 
 do
-    local luacheck = require("efmls-configs.linters.luacheck")
+    local selene = require("efmls-configs.linters.selene")
     local stylua = require("efmls-configs.formatters.stylua")
 
     local flake8 = require("efmls-configs.linters.flake8")
@@ -628,7 +673,7 @@ do
                 cpp = { clangfmt, cpplint },
                 css = { prettier_d },
                 html = { prettier_d },
-                lua = { luacheck, stylua },
+                lua = { selene, stylua },
                 markdown = { prettier_d },
                 python = { flake8, black },
                 sh = { shellcheck, shfmt },

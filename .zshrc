@@ -58,3 +58,9 @@ source "$HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.z
 
 # Machine-local secrets/overrides — NOT tracked in the dotfiles repo
 [ -f "$HOME/.zshrc.local" ] && source "$HOME/.zshrc.local"
+. "/Users/martijnspitter/.deno/env"
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/martijnspitter/.lmstudio/bin"
+# End of LM Studio CLI section
+
