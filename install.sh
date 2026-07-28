@@ -45,9 +45,13 @@ link "$DOTFILES/nvim"            "$CONFIG/nvim"
 link "$DOTFILES/.aerospace.toml" "$HOME/.aerospace.toml"
 link "$DOTFILES/.tmux.conf"      "$HOME/.tmux.conf"
 link "$DOTFILES/.claude/statusline-command.sh" "$HOME/.claude/statusline-command.sh"
+link "$DOTFILES/herdr/config.toml" "$CONFIG/herdr/config.toml"
 
 # Not symlinked (used in place from the repo):
-#   tmuxp/              -> via $TMUXP_CONFIGDIR in .zshrc
-#   tmux-sessionizer.sh -> referenced by ~/dotfiles path in .zshrc
+#   tmuxp/                -> via $TMUXP_CONFIGDIR in .zshrc
+#   tmux-sessionizer.sh   -> referenced by ~/dotfiles path in .zshrc
+#   herdr-spreader/       -> templates read by herdr-sessionizer.sh
+#   herdr-sessionizer.sh  -> invoked by ctrl+g keybinding in herdr/config.toml
+#                            and by zsh bindkey ^g in .zshrc
 
 echo "Done."

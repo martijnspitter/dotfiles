@@ -1,0 +1,28 @@
+# herdr-spreader layout template - default (no server)
+# Rendered via envsubst by ~/dotfiles/herdr-sessionizer.sh
+# Placeholders:
+#   ${SESSION_NAME}  workspace name  (e.g. dotfiles, klar-be)
+#   ${QUERY}         absolute path to the project root
+workspaces:
+  - name: ${SESSION_NAME}
+    root: ${QUERY}
+    focus: true
+    tabs:
+      - label: pi
+        panes:
+          - command: pi
+            focus: true
+      - label: editor
+        panes:
+          - command: nvim
+      - label: git
+        panes:
+          - command: lazygit
+      - label: terminal
+        panes:
+          - {}
+          - split: right
+            ratio: 0.5
+      - label: extra
+        panes:
+          - {}

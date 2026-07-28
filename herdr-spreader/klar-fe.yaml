@@ -1,0 +1,35 @@
+# herdr-spreader layout template - klar-fe (with proxy + dev server)
+# Rendered via envsubst by ~/dotfiles/herdr-sessionizer.sh
+# Placeholders:
+#   ${SESSION_NAME}  workspace name
+#   ${QUERY}         absolute path to the project root
+workspaces:
+  - name: ${SESSION_NAME}
+    root: ${QUERY}
+    focus: true
+    tabs:
+      - label: pi
+        panes:
+          - command: pi
+            focus: true
+      - label: editor
+        panes:
+          - command: nvim
+      - label: git
+        panes:
+          - command: lazygit
+      - label: terminal
+        panes:
+          - {}
+          - split: right
+            ratio: 0.5
+      - label: server
+        panes:
+          - cwd: proxy
+            command: >-
+              docker compose ps --status running | grep -q klar-proxy-prod
+              && docker compose attach klar-proxy-prod
+              || docker compose up klar-proxy-prod
+          - split: right
+            ratio: 0.5
+            command: pnpm start

@@ -27,7 +27,13 @@ source "$HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
 
 export PYTHON=python3
 
+# ctrl+f -> tmux sessionizer (original tmux/tmuxp workflow).
 bindkey -s ^f "~/dotfiles/tmux-sessionizer.sh\n"
+# ctrl+g -> herdr sessionizer, mirrors the ctrl+g keybinding defined in
+# dotfiles/herdr/config.toml. Also works from a bare shell outside Herdr:
+# the script will start the server (if needed), apply/focus the workspace,
+# and then attach with `exec herdr`.
+bindkey -s ^g "~/dotfiles/herdr-sessionizer.sh\n"
 bindkey -s ^dt "tmux detach"
 
 

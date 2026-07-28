@@ -1,0 +1,56 @@
+# Herdr config
+# Symlinked to ~/.config/herdr/config.toml by install.sh
+# Reload after edits with: herdr server reload-config
+
+onboarding = false
+
+[terminal]
+shell_mode = "auto"
+new_cwd = "follow"
+
+[theme]
+name = "catppuccin"
+
+# ---------------------------------------------------------------------------
+# Keybindings
+# ---------------------------------------------------------------------------
+# Default prefix stays as ctrl+b.
+#
+# Direct pane navigation (vim-style h/l). Note: ctrl+h shares its byte
+# with Backspace in many terminals, so Backspace elsewhere may also focus
+# the left pane. If that becomes a problem, switch to `prefix+h` /
+# `prefix+l` here.
+[keys]
+focus_pane_left  = "ctrl+h"
+focus_pane_right = "ctrl+l"
+
+# Workspace navigation.
+#   prefix+w              open the workspace picker (built-in default)
+#   prefix+shift+1..9     jump directly to workspace N
+#   prefix+1..9           still switches tabs (herdr default)
+# next_workspace / previous_workspace are left unset because the obvious
+# chords collide with new_workspace (prefix+shift+n) and previous_tab
+# (prefix+p). Use prefix+w to browse instead.
+switch_workspace = "prefix+shift+1..9"
+
+# Two chords open the sessionizer popup:
+#   ctrl+g       direct global chord (BEL byte, essentially unused in shells)
+#   prefix+f     safe two-step fallback (ctrl+b, f) - guaranteed to work
+# Change `key` below if you want another chord. If a direct chord "does
+# nothing", the outer terminal or the OS is eating it before Herdr sees it.
+
+[[keys.command]]
+key = "ctrl+g"
+type = "popup"
+command = "~/dotfiles/herdr-sessionizer.sh"
+description = "open project workspace (fzf)"
+width = "80%"
+height = "80%"
+
+[[keys.command]]
+key = "prefix+f"
+type = "popup"
+command = "~/dotfiles/herdr-sessionizer.sh"
+description = "open project workspace (fzf)"
+width = "80%"
+height = "80%"
