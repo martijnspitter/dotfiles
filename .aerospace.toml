@@ -86,11 +86,11 @@ if.app-id = 'com.google.Chrome'
 run = 'move-node-to-workspace 6'
 
 [[on-window-detected]]
-if.app-id = 'com.cmuxterm.app'
+if.app-id = 'com.mitchellh.ghostty'
 run = 'move-node-to-workspace 7'
 
 [[on-window-detected]]
-if.app-id = 'com.mitchellh.ghostty'
+if.app-id = 'md.obsidian'
 run = 'move-node-to-workspace 8'
 
 [[on-window-detected]]
@@ -100,10 +100,6 @@ run = 'move-node-to-workspace 9'
 [[on-window-detected]]
 if.app-id = 'app.zen-browser.zen'
 run = 'move-node-to-workspace Y'
-
-[[on-window-detected]]
-if.app-id = 'md.obsidian'
-run = 'move-node-to-workspace U'
 
 [[on-window-detected]]
 if.app-id = 'com.bitwarden.desktop'

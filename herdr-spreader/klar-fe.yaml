@@ -25,11 +25,15 @@ workspaces:
             ratio: 0.5
       - label: server
         panes:
-          - cwd: proxy
-            command: >-
-              docker compose ps --status running | grep -q klar-proxy-prod
-              && docker compose attach klar-proxy-prod
-              || docker compose up klar-proxy-prod
+          # Left pane: klar-proxy-prod via docker compose in ./proxy.
+          # - Uses `;` between cd and docker so a missing ./proxy does
+          #   NOT silently abort the whole chain (which was the previous
+          #   "nothing happens" behavior).
+          # - Echoes each stage so we always see what fired.
+          # - Wrapped in `sh -c` so the whole conditional is one payload
+          #   sent to the pane, avoiding multi-line paste quirks.
+          - command: "sh -c 'echo \"[server] cd ./proxy\"; cd proxy || { echo \"[server] no ./proxy in $PWD\"; exit 1; }; echo \"[server] checking klar-proxy-prod...\"; if docker compose ps --status running --format \"{{.Name}}\" | grep -qx klar-proxy-prod; then echo \"[server] attaching (ctrl-p ctrl-q to detach)\"; docker compose attach klar-proxy-prod; else echo \"[server] starting klar-proxy-prod...\"; docker compose up klar-proxy-prod; fi'"
+          # Right pane: vite dev server via `pnpm start`.
           - split: right
             ratio: 0.5
-            command: pnpm start
+            command: "echo '[dev] pnpm start'; pnpm start"
