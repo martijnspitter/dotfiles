@@ -40,17 +40,10 @@ switch_workspace = "prefix+shift+1..9"
 # nothing", the outer terminal or the OS is eating it before Herdr sees it.
 
 [[keys.command]]
-key = "ctrl+g"
+key = "ctrl+f"
 type = "popup"
 command = "~/dotfiles/herdr-sessionizer.sh"
 description = "open project workspace (fzf)"
 width = "80%"
 height = "80%"
 
-[[keys.command]]
-key = "prefix+f"
-type = "popup"
-command = "~/dotfiles/herdr-sessionizer.sh"
-description = "open project workspace (fzf)"
-width = "80%"
-height = "80%"
