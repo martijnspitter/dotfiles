@@ -22,14 +22,7 @@
           "reveal_target": "center"
         }
       ],
-      "space s f": [
-        "task::Spawn",
-        {
-          "task_name": "file_finder",
-          "reveal_target": "center"
-        }
-      ],
-      "space s F": "file_finder::Toggle"
+      "space s f": "file_finder::Toggle"
     }
   },
   {
@@ -41,14 +34,7 @@
       "ctrl-k": "workspace::ActivatePaneUp",
       "ctrl-l": "workspace::ActivatePaneRight",
       "ctrl-q": "tab_switcher::CloseSelectedItem",
-      "space s f": [
-        "task::Spawn",
-        {
-          "task_name": "file_finder",
-          "reveal_target": "center"
-        }
-      ],
-      "space s F": "file_finder::Toggle",
+      "space s f": "file_finder::Toggle",
       "enter": "editor::Newline",
       "cmd-enter": "agent::Chat",
       "cmd-w": "workspace::ToggleRightDock"
@@ -105,14 +91,7 @@
       "t l": "pane::ActivateNextItem",
       "t a": "pane::CloseOtherItems",
       "ctrl-q": "pane::CloseActiveItem",
-      "space s f": [
-        "task::Spawn",
-        {
-          "task_name": "file_finder",
-          "reveal_target": "center"
-        }
-      ],
-      "space s F": "file_finder::Toggle",
+      "space s f": "file_finder::Toggle",
       "space s g": "project_symbols::Toggle",
       "space s b": "buffer_search::Deploy",
       "space s t": "pane::DeploySearch",
@@ -151,14 +130,7 @@
       "cmd-k": "editor::AddSelectionAbove",
       "cmd-j": "editor::AddSelectionBelow",
       "cmd-ctrl-n": "editor::AddSelectionBelow",
-      "space s f": [
-        "task::Spawn",
-        {
-          "task_name": "file_finder",
-          "reveal_target": "center"
-        }
-      ],
-      "space s F": "file_finder::Toggle",
+      "space s f": "file_finder::Toggle",
       "space s g": "project_symbols::Toggle",
       "cmd-d": [
         "editor::SelectNext",

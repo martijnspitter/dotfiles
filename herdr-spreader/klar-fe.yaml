@@ -14,7 +14,7 @@ workspaces:
             focus: true
       - label: editor
         panes:
-          - command: nvim
+          - {}
       - label: git
         panes:
           - command: lazygit

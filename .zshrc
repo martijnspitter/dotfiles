@@ -67,3 +67,17 @@ source "$HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.z
 export PATH="$PATH:/Users/martijnspitter/.lmstudio/bin"
 # End of LM Studio CLI section
 
+
+# >>> juliaup initialize >>>
+
+# !! Contents within this block are managed by juliaup !!
+
+path=('/Users/martijnspitter/.juliaup/bin' $path)
+export PATH
+# Tab completion for juliaup and julia channel selection
+[ -f "/Users/martijnspitter/.julia/juliaup/completions/zsh.zsh" ] && source "/Users/martijnspitter/.julia/juliaup/completions/zsh.zsh"
+
+# <<< juliaup initialize <<<
+
+# pi-claude-auth: override hardcoded Claude Code version (2.1.160) so new models are accepted
+export ANTHROPIC_CLI_VERSION=2.1.280

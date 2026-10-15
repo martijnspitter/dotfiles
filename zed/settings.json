@@ -7,6 +7,7 @@
 // custom settings, run `zed: open default settings` from the
 // command palette
 {
+  "base_keymap": "Emacs",
   "cli_default_open_behavior": "existing_window",
   "project_panel": {
     "dock": "left"
@@ -46,7 +47,11 @@
   },
   "always_treat_brackets_as_autoclosed": true,
   "bottom_dock_layout": "right_aligned",
-  "icon_theme": "Material Icon Theme",
+  "icon_theme": {
+    "mode": "dark",
+    "light": "Material Icon Theme",
+    "dark": "Material Icon Theme"
+  },
   "edit_predictions": {
     "provider": "copilot",
     "disabled_globs": [],
@@ -113,9 +118,9 @@
   },
   "buffer_font_size": 14,
   "theme": {
-    "mode": "system",
+    "mode": "dark",
     "light": "One Light",
-    "dark": "Catppuccin Mocha"
+    "dark": "One Dark"
   },
   "code_actions_on_format": {
     "source.removeUnusedImports": true,
