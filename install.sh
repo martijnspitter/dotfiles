@@ -47,11 +47,21 @@ link "$DOTFILES/.tmux.conf"      "$HOME/.tmux.conf"
 link "$DOTFILES/.claude/statusline-command.sh" "$HOME/.claude/statusline-command.sh"
 link "$DOTFILES/herdr/config.toml" "$CONFIG/herdr/config.toml"
 
+# tuios reads its config from the OS config dir, not ~/.config, on macOS.
+if [ "$(uname -s)" = "Darwin" ]; then
+  TUIOS_CONFIG="$HOME/Library/Application Support/tuios"
+else
+  TUIOS_CONFIG="$CONFIG/tuios"
+fi
+link "$DOTFILES/tuios/config.toml" "$TUIOS_CONFIG/config.toml"
+
 # Not symlinked (used in place from the repo):
 #   tmuxp/                -> via $TMUXP_CONFIGDIR in .zshrc
 #   tmux-sessionizer.sh   -> referenced by ~/dotfiles path in .zshrc
 #   herdr-spreader/       -> templates read by herdr-sessionizer.sh
-#   herdr-sessionizer.sh  -> invoked by ctrl+g keybinding in herdr/config.toml
-#                            and by zsh bindkey ^g in .zshrc
+#   herdr-sessionizer.sh  -> invoked by ctrl+f keybinding in herdr/config.toml
+#   tuios-sessionizer.sh  -> invoked by prefix+ctrl+f keybinding in tuios/config.toml
+#                            and by zsh bindkey ^f in .zshrc
+#   tuios/layouts/        -> layouts sourced by tuios-sessionizer.sh
 
 echo "Done."

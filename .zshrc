@@ -27,11 +27,12 @@ source "$HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
 
 export PYTHON=python3
 
-# ctrl+g -> herdr sessionizer, mirrors the ctrl+g keybinding defined in
-# dotfiles/herdr/config.toml. Also works from a bare shell outside Herdr:
-# the script will start the server (if needed), apply/focus the workspace,
-# and then attach with `exec herdr`.
-bindkey -s ^f "~/dotfiles/herdr-sessionizer.sh\n"
+# ctrl+f -> tuios sessionizer, mirrors the prefix+ctrl+f popup defined in
+# dotfiles/tuios/config.toml. Inside tuios it switches the client to the
+# project session (creating it with its layout if needed); from a bare shell
+# it ends with `exec tuios attach`.
+# Herdr version: ~/dotfiles/herdr-sessionizer.sh
+bindkey -s ^f "~/dotfiles/tuios-sessionizer.sh\n"
 
 
 export CF_PAGES_URL="http://localhost"
