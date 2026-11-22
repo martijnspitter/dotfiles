@@ -1,3 +1,7 @@
 
 # Zed prompt library database (binary, machine-local)
 zed/prompts/
+
+# pi: secrets stay local (extensions/ is symlinked, so they live here on disk)
+pi/extensions/linear/credentials.json
+pi/**/auth.json

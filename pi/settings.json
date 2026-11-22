@@ -1,0 +1,84 @@
+{
+  "defaultTools": [
+    "+codemode",
+    "+tool_search"
+  ],
+  "packages": [
+    "npm:@alasano/pi-linear",
+    "npm:pi-claude-auth",
+    "npm:pi-web-access",
+    "npm:@firstpick/pi-themes-bundle",
+    "npm:pi-subagents",
+    "npm:@vndv/pi-codegraph",
+    "npm:pi-lmstudio",
+    "npm:@dev.fast/pi-whiteboard",
+    "npm:pi-mcp-adapter",
+    "npm:@earendil-works/pi-durable"
+  ],
+  "lastChangelogVersion": "1.6.0",
+  "theme": "catppuccin-mocha-mine",
+  "defaultProvider": "anthropic",
+  "defaultModel": "claude-opus-5-5",
+  "defaultThinkingLevel": "high",
+  "hideThinkingBlock": true,
+  "subagents": {
+    "agentOverrides": {
+      "ac-test-author": {
+        "model": "anthropic/claude-opus-4-8",
+        "thinking": "high"
+      },
+      "accessibility-tester": {
+        "model": "anthropic/claude-opus-5-5",
+        "thinking": "medium"
+      },
+      "check-architecture": {
+        "model": "anthropic/claude-opus-5-5",
+        "thinking": "medium"
+      },
+      "code-reviewer": {
+        "model": "anthropic/claude-opus-5-5",
+        "thinking": "medium"
+      },
+      "documentation-engineer": {
+        "model": "anthropic/claude-opus-5-5",
+        "thinking": "medium"
+      },
+      "issue-implementer": {
+        "model": "anthropic/claude-opus-4-8",
+        "thinking": "high"
+      },
+      "multi-agent-coordinator": {
+        "model": "anthropic/claude-opus-5-5",
+        "thinking": "medium"
+      },
+      "react-specialist": {
+        "model": "anthropic/claude-opus-5-5",
+        "thinking": "medium"
+      },
+      "refactoring-specialist": {
+        "model": "anthropic/claude-opus-5-5",
+        "thinking": "medium"
+      },
+      "research-analyst": {
+        "model": "anthropic/claude-opus-5-5",
+        "thinking": "medium"
+      },
+      "review-docs": {
+        "model": "anthropic/claude-opus-5-5",
+        "thinking": "medium"
+      },
+      "typescript-pro": {
+        "model": "anthropic/claude-opus-5-5",
+        "thinking": "medium"
+      }
+    }
+  },
+  "extensions": [
+    "-builtin:mcp"
+  ],
+  "extensionChangelogVersions": {
+    "{\"source\":\"npm:pi-web-access\",\"scope\":\"user\"}": "0.48.0",
+    "{\"source\":\"npm:pi-subagents\",\"scope\":\"user\"}": "0.89.2",
+    "{\"source\":\"npm:pi-mcp-adapter\",\"scope\":\"user\"}": "7.0.1"
+  }
+}

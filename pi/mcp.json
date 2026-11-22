@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "mcp-skill-hub": {
+      "url": "https://skill-hub-mcp-prod.tail16264.ts.net/mcp/",
+      "auth": "oauth"
+    }
+  }
+}

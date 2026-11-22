@@ -1,0 +1,23 @@
+{
+  "providers": {
+    "lmstudio": {
+      "baseUrl": "http://127.0.0.1:1234/api/v1",
+      "api": "openai-completions",
+      "apiKey": "lmstudio",
+      "compat": {
+        "supportsDeveloperRole": false,
+        "supportsReasoningEffort": false
+      },
+      "models": [
+        {
+          "id": "qwen/qwen3.8-27b",
+          "name": "Qwen 3.8 27B",
+          "reasoning": true,
+          "contextWindow": 208384,
+          "maxTokens": 32000,
+          "input": ["text"]
+        }
+      ]
+    }
+  }
+}

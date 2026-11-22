@@ -55,6 +55,16 @@ else
 fi
 link "$DOTFILES/tuios/config.toml" "$TUIOS_CONFIG/config.toml"
 
+# pi coding agent. Only config is versioned; auth.json, sessions/, npm/ and the
+# caches stay local in ~/.pi/agent. extensions/linear/credentials.json is
+# gitignored and lives in the repo dir on disk.
+PI_AGENT="$HOME/.pi/agent"
+link "$DOTFILES/pi/settings.json" "$PI_AGENT/settings.json"
+link "$DOTFILES/pi/models.json"   "$PI_AGENT/models.json"
+link "$DOTFILES/pi/mcp.json"      "$PI_AGENT/mcp.json"
+link "$DOTFILES/pi/extensions"    "$PI_AGENT/extensions"
+link "$DOTFILES/pi/themes"        "$PI_AGENT/themes"
+
 # Not symlinked (used in place from the repo):
 #   tmuxp/                -> via $TMUXP_CONFIGDIR in .zshrc
 #   tmux-sessionizer.sh   -> referenced by ~/dotfiles path in .zshrc
