@@ -122,6 +122,10 @@ daemon = true
 
 [appearance]
 theme = "catppuccin_macchiato"
+# Let tuios-nvim-navigator (nvim/lua/packs.lua) take ctrl+h/j/k/l first: it
+# moves between Neovim splits, and at a split edge hands the key back to tuios
+# to focus the neighbouring pane.
+nvim_navigation = true
 
 [agents]
 enabled = true
@@ -137,7 +141,7 @@ format = "png"
 # prefix+1..9 switches workspace, like herdr's prefix+1..9 switched tabs (the
 # sessionizer layouts put each herdr tab on its own tuios workspace). tuios's
 # default there is "jump to window N"; one key holds one action, so those are
-# unbound. Focus a pane on the workspace with ctrl+b Q (labels) or alt+arrows.
+# unbound. Focus a pane on the workspace with ctrl+b Q (labels) or ctrl+h/j/k/l.
 [keybindings.prefix_mode]
 prefix_select_1 = []
 prefix_select_2 = []
@@ -157,6 +161,16 @@ switch_workspace_6 = ["6"]
 switch_workspace_7 = ["7"]
 switch_workspace_8 = ["8"]
 switch_workspace_9 = ["9"]
+
+# ctrl+h/j/k/l focuses the pane left/down/up/right in terminal mode (vim-style,
+# like vim-tmux-navigator), replacing the default alt+arrows. These keys no
+# longer reach the shell (ctrl+l clear, ctrl+k kill-line); in Neovim they go to
+# tuios-nvim-navigator first because of appearance.nvim_navigation.
+[keybindings.terminal_mode]
+terminal_focus_left = ["ctrl+h"]
+focus_down = ["ctrl+j"]
+focus_up = ["ctrl+k"]
+terminal_focus_right = ["ctrl+l"]
 
 # prefix+ctrl+f (ctrl+b, ctrl+f): pick a project and open/switch to its session, with
 # the per-path layout from ~/dotfiles/tuios/layouts. Mirrors the ctrl+f popup

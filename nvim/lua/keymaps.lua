@@ -39,14 +39,8 @@ vim.keymap.set({ "n", "v" }, "<leader>d", '"_d', { desc = "Delete without yankin
 vim.keymap.set('n', '<C-w>e', '<C-w>=', { desc = 'Make splits equal size' })
 vim.keymap.set('n', '<C-w>q', '<cmd>close<CR>', { desc = 'Close current split' })
 
--- Keybinds to make split navigation easier.
---  Use CTRL+<hjkl> to switch between windows
---
---  See `:help wincmd` for a list of all window commands
-vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left window' })
-vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
-vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
-vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
+-- CTRL+<hjkl> split navigation (and on to tuios panes) is set up by
+-- tuios-nvim-navigator in packs.lua.
 
 -- Center buffer while navigating
 vim.keymap.set('n', '<C-u>', '<C-u>zz', { desc = 'Center buffer while jumping up' })

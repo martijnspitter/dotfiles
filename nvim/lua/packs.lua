@@ -27,6 +27,7 @@ vim.pack.add({
     "https://github.com/rafamadriz/friendly-snippets",
     "https://github.com/nvim-lualine/lualine.nvim",
     "https://github.com/catppuccin/nvim",
+    "https://github.com/Tim4c/tuios-nvim-navigator",
 })
 
 -- ============================================================================
@@ -351,6 +352,30 @@ require("mini.bufremove").setup({})
 require("mini.notify").setup({})
 require("mini.icons").setup({})
 require("mini.cmdline").setup({})
+
+-- ============================================================================
+-- TUIOS NAVIGATOR
+-- ============================================================================
+-- ctrl+h/j/k/l move between splits; at the edge of the last split, focus the
+-- neighbouring tuios pane (needs appearance.nvim_navigation in tuios/config.toml).
+-- Outside tuios the keys only move between splits.
+require("tuios-nvim-navigator").setup({
+    keymaps = { left = "<C-h>", down = "<C-j>", up = "<C-k>", right = "<C-l>" },
+    on_boundary = (vim.env.TUIOS_ENV == nil) and function() end or nil,
+})
+
+-- tuios hands ctrl+h/j/k/l to nvim only while it remembers nvim's "active"
+-- announcement. The plugin announces at startup and on focus-in only, which a
+-- tuios client reattach or config reload can miss, so announce on more events.
+if vim.env.TUIOS_ENV then
+    vim.api.nvim_create_autocmd({ "UIEnter", "WinEnter", "BufEnter", "CursorHold" }, {
+        group = vim.api.nvim_create_augroup("TuiosNavigatorReannounce", { clear = true }),
+        callback = function()
+            io.stdout:write("\27]7777;tuios-nvim-navigator;state;active\7")
+            io.stdout:flush()
+        end,
+    })
+end
 
 -- ============================================================================
 -- GITSIGNS
