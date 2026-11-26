@@ -13,7 +13,8 @@
     "npm:pi-lmstudio",
     "npm:@dev.fast/pi-whiteboard",
     "npm:pi-mcp-adapter",
-    "npm:@earendil-works/pi-durable"
+    "npm:@earendil-works/pi-durable",
+    "npm:@soulwaxx/obsidian-second-brain"
   ],
   "lastChangelogVersion": "1.6.0",
   "theme": "catppuccin-mocha-mine",
